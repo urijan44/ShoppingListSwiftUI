@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+  @State var item: ShoppingItem = ShoppingItem.dummy
+  var body: some View {
+    ShoppingItemCell(
+      content: $item.content,
+      isComplte: $item.isCompleted,
+      isBookmarked: $item.isBookmarked)
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
