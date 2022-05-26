@@ -10,10 +10,15 @@ import SwiftUI
 struct ContentView: View {
   @State var item: ShoppingItem = ShoppingItem.dummy
   var body: some View {
-    ShoppingItemCell(
-      content: $item.content,
-      isComplte: $item.isCompleted,
-      isBookmarked: $item.isBookmarked)
+    ScrollView(.vertical) {
+      ForEach(1..<20) { _ in
+        ShoppingItemCell(
+          content: $item.content,
+          isComplte: $item.isCompleted,
+          isBookmarked: $item.isBookmarked)
+      }
+    }
+
   }
 }
 
