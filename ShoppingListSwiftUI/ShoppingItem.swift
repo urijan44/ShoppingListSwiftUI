@@ -15,6 +15,8 @@ struct ShoppingItem {
   var date: Date
 }
 
+extension ShoppingItem: Hashable { }
+
 extension ShoppingItem {
   static var dummy: ShoppingItem {
     .init(content: "물건을 잊지 마세요", isCompleted: false, isBookmarked: false, date: Date())
