@@ -35,13 +35,14 @@ struct ShoppingItemCell: View {
   @State var currentX: CGFloat = 0
 
   var body: some View {
-    HStack(spacing: 0) {
+    ZStack(alignment: .trailing) {
       listBody()
         .offset(x: currentX)
         .gesture(
           drag()
         )
       deleteButton
+        .layoutPriority(1)
     }
   }
 
@@ -57,7 +58,7 @@ struct ShoppingItemCell: View {
       RoundedRectangle(cornerRadius: 8)
         .stroke(lineWidth: 2)
     )
-    .padding(.horizontal)
+    .layoutPriority(1000)
     .transition(.move(edge: .bottom).animation(.easeIn(duration: 0.5)))
   }
 
@@ -84,6 +85,7 @@ struct ShoppingItemCell: View {
       .foregroundColor(.red)
       .overlay(Text("🍗"))
       .frame(width: -currentX)
+
   }
 
   init(_ viewModel: ViewModel) {
